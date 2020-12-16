@@ -1,0 +1,36 @@
+{
+  "name": "dex",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build && next export"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@chakra-ui/react": "^1.0.3",
+    "@emotion/react": "^11.1.2",
+    "@emotion/styled": "^11.0.0",
+    "@web3-react/core": "^6.1.1",
+    "babel-plugin-styled-components": "^1.12.0",
+    "framer-motion": "^2.9.5",
+    "next": "^10.0.3",
+    "next-images": "^1.6.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.1",
+    "web3-react": "^5.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@types/node": "^14.14.14",
+    "@types/react": "^17.0.0",
+    "typescript": "^4.1.3"
+  }
+}
