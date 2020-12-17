@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Swap from "../components/Swap";
 import {RiExchangeFundsLine} from "react-icons/ri";
@@ -6,6 +6,7 @@ import {BsFillDropletFill,BsPlusCircleFill} from "react-icons/bs";
 import styled from "styled-components";
 import {Input,Label,SwapSystem} from "../components/Inputs";
 import {MaxButton} from "../components/Buttons";
+import { fetchMarkets} from "../redux/actions/markets";
 
 const StyledTab = styled(Tab)`
 color: #222831 !important;
@@ -16,7 +17,13 @@ font-size: 18px !important;
 }
 `;
 
+
+
+
 const App = () => {
+  useEffect(() => { 
+    fetchMarkets();
+  },[])
   return (
     <Swap>
       <Tabs variant="soft-rounded" align="center" colorScheme="green">

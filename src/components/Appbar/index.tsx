@@ -4,10 +4,12 @@ import Logo from "../Logo";
 import logo from "../../images/logo.png";
 import Item from "./Item";
 import Web3Modal from "../Web3Modal";
-import {IconButton,useDisclosure} from "@chakra-ui/react";
+import {IconButton,useDisclosure , Grid, GridItem} from "@chakra-ui/react";
 import {AiFillSetting} from "react-icons/ai";
 import {CgMoreVerticalO} from "react-icons/cg";
 import Drawers from "../Drawers";
+import {BiMenuAltLeft} from "react-icons/bi";
+
 
 const Header = styled.header`
 max-width:1200px;
@@ -52,7 +54,7 @@ const Appbar = () => {
             setResize(true);
           }
           else{
-            setResize(true)
+            setResize(false)
           }
         });
   
@@ -79,11 +81,41 @@ const Appbar = () => {
                 </DappBar>    
             </Header>
         )
+    }
+
+    const MobileNavigation = () => {
+        return(
+          <Header>
+            <DappBar>
+            <Grid style={{ alignItems: 'center'}} templateColumns="4fr 4fr 4fr" gap={6} width="100%">
+            <GridItem rowSpan={1} colSpan={1}>
+                <IconButton 
+                style={{boxShadow: 'none'}} 
+                aria-label="Menu" 
+                size="lg" 
+                colorScheme="white"  
+                icon={<BiMenuAltLeft />} 
+                />
+                  </GridItem>
+                  <GridItem rowSpan={1} colSpan={1}>
+                <Logo logo={logo} alt="EllaSwap"/>
+                </GridItem>
+
+                <GridItem rowSpan={1} colSpan={1}>
+                <Web3Modal />
+                </GridItem>
+                </Grid>
+            </DappBar>
+          </Header>
+        )
     }    
 
 
+  console.log(isResize);  
   return(    
-    <DesktopNavigation />
+      <>
+        {isResize  ? <MobileNavigation /> : <DesktopNavigation />}
+      </>
   )
 
 }

@@ -9,6 +9,9 @@ padding: 4px;
 const DappRegisteredLogo = styled.img`
 width: 64px;
 padding:4px;
+@media(max-width:600px){
+    width:50px;
+}
 `; 
 
 const Logo = ({logo,alt}: {logo: string,alt: string}) => {
