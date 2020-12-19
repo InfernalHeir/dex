@@ -1,34 +1,41 @@
-import metamask from "./images/providers/metamask.png";
-import walletconnect from "./images/providers/walletconnect.png";
-import portis from "./images/providers/portis.png";
-import fortmatic from "./images/providers/fortmatic.png";
-import ledger from "./images/providers/ledger.png";
-import trezor from "./images/providers/trezor.png";
+import metamaskImage from "./images/providers/metamask.png";
+import walletconnectImage from "./images/providers/walletconnect.png";
+import portisImage from "./images/providers/portis.png";
+import fortmaticImage from "./images/providers/fortmatic.png";
+import ledgerImage from "./images/providers/ledger.png";
+import trezorImage from "./images/providers/trezor.png";
+import {fortmatic, injected, ledger, portis, trezor, walletconnect} from "./connectors";
 
-const providers = [
+const providers: any = [
     {
         name: "Metamask",
-        logo: metamask
+        logo: metamaskImage,
+        connector: injected
     },
     {
         name: "Wallet Connect",
-        logo: walletconnect
+        logo: walletconnectImage,
+        connector: walletconnect
     },
     {
         name: "Portis",
-        logo: portis
+        logo: portisImage,
+        connector: portis
     },
     {
         name: "Fortmatic",
-        logo: fortmatic
+        logo: fortmaticImage,
+        connector: fortmatic
     },
     {
         name: "Ledger",
-        logo: ledger
+        logo: ledgerImage,
+        connector: ledger
     },
     {
         name: "Trezor",
-        logo: trezor
+        logo: trezorImage,
+        connector: trezor
     }
 ]
 
