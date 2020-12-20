@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React , {useState, useEffect} from "react";
 import styled from "styled-components";
 import Logo from "../Logo";
 import logo from "../../images/logo.png";
 import Item from "./Item";
-import Web3Modal from "../Web3Modal";
-import { IconButton, useDisclosure, Grid, GridItem } from "@chakra-ui/react";
+import {Connect} from "../Buttons";
+import { IconButton, Grid, GridItem } from "@chakra-ui/react";
 import { AiFillSetting } from "react-icons/ai";
 import { CgMoreVerticalO } from "react-icons/cg";
 import Drawers from "../Drawers";
 import { BiMenuAltLeft } from "react-icons/bi";
+import { useDispatch } from "react-redux";
 
 const Header = styled.header`
   max-width: 1200px;
@@ -38,8 +39,9 @@ const LeftListItem = styled.ul`
 `;
 
 const Appbar = () => {
-  const Btnref = useRef();
-
+  
+  const dispatch = useDispatch();
+  
   const [isResize, setResize] = useState(false);
 
   useEffect(() => {
@@ -56,7 +58,17 @@ const Appbar = () => {
     });
   }, []);
 
-  const { onOpen, isOpen, onClose } = useDisclosure();
+ 
+
+  const onOpen = () => {
+      return dispatch({
+        type: 'OPEN',
+        payload: {
+          isOpen: true
+        }
+      })
+  }
+  
   const DesktopNavigation = () => {
     return (
       <Header>
@@ -69,7 +81,9 @@ const Appbar = () => {
           </ListDropDown>
           <ListDropDown>
             <LeftListItem>
-              <Web3Modal />
+               <Connect colorScheme="green" size="sm" onClick={onOpen}>
+                  Connect
+               </Connect>
             </LeftListItem>
           </ListDropDown>
         </DappBar>
@@ -101,7 +115,9 @@ const Appbar = () => {
             </GridItem>
 
             <GridItem rowSpan={1} colSpan={1}>
-              <Web3Modal />
+                <Connect colorScheme="green" size="sm" onClick={onOpen}>
+                  Connect
+               </Connect>
             </GridItem>
           </Grid>
         </DappBar>

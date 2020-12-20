@@ -10,17 +10,21 @@ import reducres from "../redux/reducers";
 import ReduxThunk from "redux-thunk";
 import { Web3ReactProvider } from "@web3-react/core";
 import Web3 from "web3";
+import withRedux from "next-redux-wrapper";
+import fetch from "isomorphic-unfetch";
+import { AppContext } from "next/app";
+
+// now register the store
+
+const store = createStore(
+  reducres,
+  composeWithDevTools(
+    applyMiddleware(ReduxThunk)
+    // other store enhancers if any
+  )
+);
 
 const EllaApp = ({ Component, pageProps }) => {
-  // now register the store
-
-  const store = createStore(
-    reducres,
-    composeWithDevTools(
-      applyMiddleware(ReduxThunk)
-      // other store enhancers if any
-    )
-  );
 
   const getLibrary = (provider, connector) => {
     const web3 = new Web3(provider);
@@ -40,5 +44,6 @@ const EllaApp = ({ Component, pageProps }) => {
     </Web3ReactProvider>
   );
 };
+
 
 export default EllaApp;

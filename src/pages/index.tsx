@@ -1,54 +1,69 @@
-import React,{useEffect} from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import Swap from "../components/Swap";
-import {RiExchangeFundsLine} from "react-icons/ri";
-import {BsFillDropletFill,BsPlusCircleFill} from "react-icons/bs";
+import React, { useEffect } from "react";
+import {Card} from "../components/Swap";
+import { TabWrapper, TabList } from "../components/Tabs";
+import TabItem from "../TabItem";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import {Input,Label,SwapSystem} from "../components/Inputs";
-import {MaxButton} from "../components/Buttons";
-import { fetchMarkets} from "../redux/actions/markets";
-
-const StyledTab = styled(Tab)`
-color: #222831 !important;
-font-weight:700 !important;
-font-size: 18px !important;
-&: focus{
-    box-shadow: none !important;
-}
-`;
+import Swaping from "../components/Swap/Swaping";
+import CreatePair from "../components/CreatePair";
 
 
 
 
 const App = () => {
-  useEffect(() => { 
-    fetchMarkets();
-  },[])
+  // Tab onClick data Handlers
+
+  const tabDispatch = useDispatch();
+
+  // seletor for tab information
+
+  const selector = useSelector(({ tabstate }) => {
+    return tabstate;
+  });
+
+  const DyanmicComponent = () => {
+      if(selector.activeTab === "Swap"){
+        return <Swaping />
+      }
+      else if(selector.activeTab === "Create Pair"){
+        return <CreatePair />
+      }
+  }
   return (
-    <Swap>
-      <Tabs variant="soft-rounded" align="center" colorScheme="green">
-        <TabList>
-          <StyledTab><RiExchangeFundsLine style={{marginRight:'5px'}}/>Swap</StyledTab>
-          <StyledTab><BsFillDropletFill style={{marginRight:'5px'}} />Pool</StyledTab>
-          <StyledTab><BsPlusCircleFill style={{marginRight:'5px'}} />Create Pair</StyledTab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-                <SwapSystem>
-                <Label>trade amount</Label>
-                <div style={{position: 'relative'}}>
-                <Input type="number" placeholder="0.00 ETH" />
-                 <MaxButton>Max</MaxButton>
-                 </div>   
-                </SwapSystem>
-          </TabPanel>
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-    </Swap>
+    <Card>
+      <TabWrapper>
+        { TabItem.map(({ name, Icon }, index) => {
+          const isActive = selector.activeTabIndex === index;
+          return (
+            <TabList
+              key={index}
+              onClick={() => {
+                return tabDispatch({
+                  type: "CHANGE_TAB",
+                  payload:{
+                   activeTab: name,
+                   activeTabIndex: index,
+                  }
+                });
+              }}
+              active={isActive}
+            >
+              <Icon style={{ marginRight: "10px" }} />
+              {name}
+            </TabList>
+          );
+        })}
+      </TabWrapper>
+
+        {
+        /**
+         * here you have to fetch the component accordingly navigation
+         */
+         }
+        <DyanmicComponent />
+    </Card>
   );
 };
 
+//
 export default App;

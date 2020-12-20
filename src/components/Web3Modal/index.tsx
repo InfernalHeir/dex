@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, ModalOverlay ,ModalBody,ModalHeader, ModalContent, ModalFooter, ModalCloseButton,Button, useDisclosure,Center } from "@chakra-ui/react";
 import styled from "styled-components";
 import Logo from "../Logo";
@@ -7,15 +7,10 @@ import {useWeb3React, UnsupportedChainIdError} from "@web3-react/core";
 import {NoEthereumProviderError,UserRejectedRequestError as InjectedReject } from "@web3-react/injected-connector";
 import {useEagerConnect,useInactiveListener} from "../../hook";
 import DyanmicZone from "./DyanmicZone";
+import {useSelector,useDispatch
+} from "react-redux";
 
 
-const ConnectStyledButton = styled(Button)`
-font-size:16px!important;
-color: white;
-&: focus{
-    box-shadow: none !important;
-}
-`;
 
 
 const SpanWrapper = styled.button`
@@ -40,7 +35,7 @@ flex-direction:row;
 
 const CloseButton = styled(ModalCloseButton)`
 font-size:20px;
-color: #222831;
+color: darkslateblue;
 background: rgba(0, 0, 0, 0.06);
 &: focus{
     box-shadow: none !important;
@@ -55,6 +50,10 @@ line-height: 2;
 font-size: 16px;
 `;
 
+const StyledModalHeader = styled(ModalHeader)`
+font-size: 20px !important;
+color: darkslateblue !important;
+`;
 
 const Web3Modal = () => {
     
@@ -66,22 +65,34 @@ const Web3Modal = () => {
     if (activatingConnector && activatingConnector === connector) {
       setActivatingConnector(undefined)
     }
-  }, [activatingConnector, connector])
+  }, [activatingConnector, connector]);
 
-    const {isOpen,onOpen,onClose} = useDisclosure();
-    
-    
+  const modalSelector = useSelector(({modal})=> {
+        return modal;
+  })
+  
+  const modalDispatcher = useDispatch();
+  
+  const onClose = () => {
+    modalDispatcher({
+        type: "CLOSE",
+        payload:{
+            isOpen: false
+        }
+    })
+  }
     return(
-        <>
-        <ConnectStyledButton size="sm" colorScheme="green" onClick={onOpen}>
-            Connect
-        </ConnectStyledButton>
-            <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="xs">
+        <React.Fragment>
+            <Modal 
+            closeOnOverlayClick={false} 
+            isOpen={modalSelector.isOpen} 
+            onClose={onClose} 
+            size="xs">
                 <ModalOverlay />
                     <ModalContent>
-                        <ModalHeader>
+                        <StyledModalHeader>
                             Select wallet to continue this App
-                            </ModalHeader>   
+                            </StyledModalHeader>   
                         <CloseButton />
                             <ModalBody>
                                    {providers.map((value,index) => {
@@ -99,28 +110,21 @@ const Web3Modal = () => {
                                         }>    
                                         <DyanmicZone 
                                         name={value.name}
-                                        activated={activating}
+                                        activating={activating}
                                         logo={value.logo}
                                         isConnected={connected}
                                         />
                                     </SpanWrapper>
                                        )
-                                   })}
-
-                               {error &&  (
-                                           <ShowError>
-                                              {error.message}  
-                                            </ShowError>
-                             )}     
+                                   })}    
                             </ModalBody>
-                        
-
-          <ModalFooter>
-            
+          <ModalFooter> 
           </ModalFooter>
         </ModalContent>
       </Modal>
-      </>
+
+                            
+      </React.Fragment>
     )
 }
 
