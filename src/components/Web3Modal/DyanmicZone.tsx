@@ -18,7 +18,6 @@ text-transform: capitalize;
 
 
 const DyanmicZone = ({activating,logo,name,isConnected}) => {
-
     if(activating){
         return(
              <React.Fragment>
