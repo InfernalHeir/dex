@@ -1,7 +1,7 @@
 import metamaskImage from "./images/providers/metamask.png";
-import walletconnectImage from "./images/providers/walletconnect.png";
-import portisImage from "./images/providers/portis.png";
-import fortmaticImage from "./images/providers/fortmatic.png";
+import walletconnectImage from "./images/providers/walletConnectIcon.svg";
+import portisImage from "./images/providers/portisIcon.png";
+import fortmaticImage from "./images/providers/fortmaticIcon.png";
 import ledgerImage from "./images/providers/ledger.png";
 import trezorImage from "./images/providers/trezor.png";
 import {fortmatic, injected, ledger, portis, trezor, walletconnect} from "./connectors";

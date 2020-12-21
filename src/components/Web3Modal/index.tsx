@@ -9,12 +9,20 @@ import {useEagerConnect,useInactiveListener} from "../../hook";
 import DyanmicZone from "./DyanmicZone";
 import {useSelector,useDispatch
 } from "react-redux";
+import {BiHelpCircle} from "react-icons/bi"
 
 
 
+const StyledModal = styled(Modal)`
+border-radius: 24px !important;
+`;
+
+const StyledChakraBody = styled(ModalBody)`
+background: #f9f9f9 !important;
+`;
 
 const SpanWrapper = styled.button`
-padding: 8px;
+padding: 12px;
 margin-top: 14px;
 border-radius: 24px;
 width: 100%;
@@ -51,8 +59,25 @@ font-size: 16px;
 `;
 
 const StyledModalHeader = styled(ModalHeader)`
-font-size: 20px !important;
+font-size: 16px !important;
 color: darkslateblue !important;
+padding-top:15px !important;
+padding-bottom:15px !important;
+`;
+
+const Tag = styled.div`
+padding: 0.5rem;
+padding: 0.5rem;
+font-size: 16px;
+font-weight: 800;
+color: darkslateblue;
+display:flex;
+align-items:center;
+`;
+
+const Footer = styled(ModalFooter)`
+padding-top:0 !important;
+justify-content: left !important;
 `;
 
 const Web3Modal = () => {
@@ -94,7 +119,7 @@ const Web3Modal = () => {
                             Select wallet to continue this App
                             </StyledModalHeader>   
                         <CloseButton />
-                            <ModalBody>
+                            <StyledChakraBody>
                                    {providers.map((value,index) => {
                                     const currentConnector = value.connector;
                                     const activating = currentConnector === activatingConnector;
@@ -117,9 +142,11 @@ const Web3Modal = () => {
                                     </SpanWrapper>
                                        )
                                    })}    
-                            </ModalBody>
-          <ModalFooter> 
-          </ModalFooter>
+                            </StyledChakraBody>
+          <Footer>
+              <Tag>
+              <BiHelpCircle style={{marginRight: '8px'}} /> <a href="https://ethereum.org/en/wallets/" target="_blank">What is Ethereum Wallet ? </a></Tag> 
+          </Footer>
         </ModalContent>
       </Modal>
 

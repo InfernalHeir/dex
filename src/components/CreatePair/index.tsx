@@ -35,8 +35,8 @@ const Anchor = styled.a`
   margin-top: 16px;
 `;
 
-const Wrapper = styled.div`
-max-width:500px;
+export const Wrapper = styled.div`
+max-width:450px;
 width:100%;
 padding:0.5rem;
 margin:auto;

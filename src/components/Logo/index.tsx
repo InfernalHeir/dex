@@ -7,8 +7,9 @@ padding: 4px;
 `;
 
 const DappRegisteredLogo = styled.img`
-width: 64px;
-padding:4px;
+width: 46px;
+padding: 4px;
+margin-right: 20px;
 @media(max-width:600px){
     width:50px;
 }

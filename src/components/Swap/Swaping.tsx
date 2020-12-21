@@ -1,17 +1,30 @@
 import React from "react";
-import {SwapSystem ,Label,Input} from "../Inputs";
-import {MaxButton} from "../Buttons";
+import { SwapSystem, Label } from "../Inputs";
+import { MaxButton, SwapButton } from "../Buttons";
+import styled from "styled-components";
+import NumericalInput from "./NumericalInput";
+import { BsArrowDown } from "react-icons/bs";
+
+export const SwapIconShow = styled.div`
+  display: flex;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Swaping = () => {
-    return(
-        <SwapSystem> 
-                <Label>trade amount</Label>
-                    <div style={{position: 'relative'}}>
-                        <Input type="number" placeholder="0.00 ETH" />
-                        <MaxButton>Max</MaxButton>
-                    </div>   
-        </SwapSystem>
-    )
-}
+  return (
+    <SwapSystem>
+      <NumericalInput title="from" />
+        <SwapIconShow>
+            <BsArrowDown />
+        </SwapIconShow>
+      <NumericalInput title="to" />
+      <SwapButton size="md" isFullWidth>
+        Swap
+      </SwapButton>
+    </SwapSystem>
+  );
+};
 
 export default Swaping;

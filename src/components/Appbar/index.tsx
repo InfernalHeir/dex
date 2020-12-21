@@ -76,6 +76,7 @@ const Appbar = () => {
           <Logo logo={logo} alt="EllaSwap" />
           <ListDropDown isRight={true}>
             <Item href="/" name="Swap" />
+            <Item href="/" name="Pool" />
             <Item href="/savings" name="Savings" />
             <Item href="/advance" name="Advance Console" />
           </ListDropDown>

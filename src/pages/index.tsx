@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import Swaping from "../components/Swap/Swaping";
 import CreatePair from "../components/CreatePair";
-
+import Pool from "../components/Pool";
 
 
 
@@ -24,6 +24,9 @@ const App = () => {
   const DyanmicComponent = () => {
       if(selector.activeTab === "Swap"){
         return <Swaping />
+      }
+      else if(selector.activeTab === "Pool"){
+        return <Pool />
       }
       else if(selector.activeTab === "Create Pair"){
         return <CreatePair />

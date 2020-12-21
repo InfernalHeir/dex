@@ -33,10 +33,33 @@ border-radius: 24px;
 background: #197bc2 !important;
 `;
 
-export const Connect = styled(Button)`
-font-size:16px!important;
+export const SwapButton = styled(Button)`
+background: darkslateblue !important; 
+color:white;
+font-weight:600 !important;    
+`;
+
+export const Connect = styled.button`
+font-size: 16px;
 color: white;
+padding: 10px;
+font-weight: 800;
+width: 125px;
+border-radius: 8px;
+border: 2px solid #fff;
+transition: background 0.5s ease;
 &: focus{
-    box-shadow: none !important;
+    outline: none;
 }
+&:hover{
+    background: #5cb85c;
+    border:0;
+}
+`;
+
+export const TokenListButton = styled.button`
+padding: 0.5rem;
+color: white;
+font-weight:700;
+position: relative;
 `;

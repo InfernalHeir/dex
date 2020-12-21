@@ -11,7 +11,7 @@ const Anchor = styled.a`
 color: #fff;
 font-size: 16px;
 cursor: pointer;
-font-weight: 600;
+font-weight: 800;
 &:hover{
     color: white;
     text-decoration:none;

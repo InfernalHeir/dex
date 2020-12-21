@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { Spinner } from "@chakra-ui/react"
 
 const ProviderLogo = styled.img`
-width: 40px;
+width: 24px;
 margin-right: 20px;
-height: 40px;
+height: 24px;
 `;
 
 const ModalPara = styled.h3`
