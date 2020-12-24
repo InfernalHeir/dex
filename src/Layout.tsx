@@ -1,13 +1,15 @@
 import React from "react";
 import Appbar from "./components/Appbar";
-import Web3Modal from "./components/Web3Modal";
+import Drawers from "./components/Drawers";
 
 const Layout = ({children}) => {
     return(
         <div>
             <Appbar />
+            <Drawers 
+            drawerHeading={`Choose Wallet`}
+            />
             {children}
-            <Web3Modal />
         </div>
     )
 }

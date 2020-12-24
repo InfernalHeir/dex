@@ -19,16 +19,18 @@ const AboveHeader = styled.div`
 const StyledInputFleid = styled(NumberInputField)`
   width: 100%;
   border-radius: 8px;
-  border: 0.5px solid darkslateblue;
-  border-right: 0;
+  &: focus{
+    border: none!important;
+    box-shadow: none !important;
+  }
 `;
 
 const Wrapper = styled.div`
   border-radius: 24px;
-  background: #edf2f7a6;
-  padding: 0.5rem;
+  padding: 0.1rem;
   margin-top: 8px;
   margin-bottom: 8px;
+  box-shadow: 0 10px 40px 0 rgba(21,55,156,.06);
 `;
 
 interface NumericalInputProps {
@@ -39,10 +41,10 @@ const NumericalInput = ({title}: NumericalInputProps) => {
     <Wrapper>
       <AboveHeader>
         <Label>{title}</Label>
-        <Label>balance 0</Label>
+        <Label>available balance 0</Label>
       </AboveHeader>
 
-      <InputGroup size="md">
+      <InputGroup size="xs">
         <NumberInput
           width="100%"
           min={1}
@@ -51,7 +53,14 @@ const NumericalInput = ({title}: NumericalInputProps) => {
           precision={6}
           allowMouseWheel={true}
         >
-          <StyledInputFleid placeholder="Enter Amount" />
+          <StyledInputFleid 
+          placeholder="0.00" 
+          border="none"
+          fontSize="20px"
+          fontWeight={900}
+          padding="0.5rem"
+          inputMode="decimal"
+          />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm">
               ETH

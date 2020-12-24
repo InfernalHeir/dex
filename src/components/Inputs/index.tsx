@@ -24,7 +24,7 @@ position:relative;
 
 export const Label = styled.h6`
 color: #222831;
-font-weight: 900;
+font-weight: 700;
 font-size: 14px;
 padding: 0;
 margin: 0 12px 0 12px;

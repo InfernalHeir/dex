@@ -36,7 +36,8 @@ background: #197bc2 !important;
 export const SwapButton = styled(Button)`
 background: darkslateblue !important; 
 color:white;
-font-weight:600 !important;    
+font-weight:600 !important; 
+margin-top:1rem   
 `;
 
 export const Connect = styled.button`
@@ -51,10 +52,7 @@ transition: background 0.5s ease;
 &: focus{
     outline: none;
 }
-&:hover{
-    background: #5cb85c;
-    border:0;
-}
+
 `;
 
 export const TokenListButton = styled.button`

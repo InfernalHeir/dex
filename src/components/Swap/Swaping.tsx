@@ -7,7 +7,7 @@ import { BsArrowDown } from "react-icons/bs";
 
 export const SwapIconShow = styled.div`
   display: flex;
-  height: 2.5rem;
+  height: 1rem;
   justify-content: center;
   align-items: center;
 `;
