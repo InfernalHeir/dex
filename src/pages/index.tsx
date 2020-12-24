@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Swaping from "../components/Swap/Swaping";
 import CreatePair from "../components/CreatePair";
 import Pool from "../components/Pool";
-
+import fetch from "isomorphic-unfetch";
 
 
 const App = () => {
@@ -67,6 +67,4 @@ const App = () => {
     </Card>
   );
 };
-
-//
 export default App;

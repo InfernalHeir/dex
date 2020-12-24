@@ -2,18 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Spinner } from "@chakra-ui/react"
 
-const ProviderLogo = styled.img`
-width: 24px;
-margin-right: 20px;
-height: 24px;
-`;
-
-const ModalPara = styled.h3`
-font-size: 18px;
-color: #222831;
-font-weight: 800;
-text-transform: capitalize;
-`;
 
 
 
@@ -22,15 +10,15 @@ const DyanmicZone = ({activating,logo,name,isConnected}) => {
         return(
              <React.Fragment>
                 <Spinner style={{marginRight: "20px"}} size="md" />
-                <ModalPara>Initializing Request..</ModalPara>
+                <h3 className="modal-para">Initializing Request..</h3>
             </React.Fragment>
         );   
     }
     else{
          return(
          <React.Fragment>
-            <ProviderLogo src={logo} alt={name} />
-            <ModalPara>{name}</ModalPara>
+            <img className="provider-logo" src={logo} alt={name} />
+            <h3 className="modal-para">{name}</h3>
          </React.Fragment>
          )  
     }

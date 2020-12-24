@@ -1,0 +1,26 @@
+*{
+    padding:0;
+    margin:0;
+  }
+  html{
+    padding:0;
+    margin:0;
+    height:100vh;
+  }
+  body {
+      margin: 0;
+      padding: 0;
+      background: rgb(22, 82, 240) !important;
+      font-family: Open-Sans, Helvetica, Sans-Serif;
+    }
+  .provider-logo{
+  width: 24px;
+  margin-right: 20px;
+  height: 24px;
+  }
+  .modal-para{
+  font-size: 18px;
+  color: #222831;
+  font-weight: 800;
+  text-transform: capitalize;
+  }

@@ -2,7 +2,6 @@ import React from "react";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import Layout from "../Layout";
-import GlobalStyle from "../GlobalStyle";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -13,7 +12,7 @@ import Web3 from "web3";
 import withRedux from "next-redux-wrapper";
 import fetch from "isomorphic-unfetch";
 import { AppContext } from "next/app";
-
+import "../index.css";
 // now register the store
 
 const store = createStore(
@@ -35,7 +34,6 @@ const EllaApp = ({ Component, pageProps }) => {
     <Web3ReactProvider getLibrary={getLibrary}>
       <Provider store={store}>
         <ChakraProvider theme={theme}>
-          <GlobalStyle />
           <Layout>
             <Component {...pageProps} />
           </Layout>
